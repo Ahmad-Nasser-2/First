@@ -1,15 +1,30 @@
 import './bootstrap';
 import '../css/app.css';
 
-// ===== 1. MOCK INERTIA (if needed) ===== //
+// ===== 1. MOCK INERTIA (Development Only) ===== //
 if (import.meta.env.DEV) {
-  import('./fakeInertia.js');
+  try {
+    // Optional: Only include if you need to mock Inertia
+    await import('./fakeInertia.js');
+  } catch (e) {
+    console.warn('Inertia mock failed to load', e);
+  }
 }
 
-// ===== 2. MSW MOCK API ===== //
+// ===== 2. MSW MOCK API (Development Only) ===== //
 if (import.meta.env.DEV) {
-  const { worker } = await import('./mocks/browser');
-  worker.start();
+  try {
+    const { worker } = await import('./mocks/browser');
+    await worker.start({
+      onUnhandledRequest: 'bypass',
+      serviceWorker: {
+        url: '/mockServiceWorker.js',
+      },
+    });
+    console.log('[MSW] Mocking enabled');
+  } catch (e) {
+    console.warn('API mocking failed to start', e);
+  }
 }
 
 // ===== Original Inertia Setup ===== //

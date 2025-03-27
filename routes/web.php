@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 
-Route::get('/', function () {
+
+Route::get("/home",[AuthController::class,"home"]);
+
+Route::post('/home', function () {
     return inertia('Home');
 });
 Route::get('/contact', function () {
@@ -23,4 +27,15 @@ Route::post('/contact', function (Request $request) {
 
     // If validation passes, return success (no database save)
     return back()->with('success', 'Form submitted successfully!');
+});
+
+Route::get("/test",function(){
+    return Inertia::render('test');
+});
+
+Route::post("/test",function(){
+    return Inertia::render('test');
+});
+Route::get('/csrf-token', function() {
+    return response()->json(['token' => csrf_token()]);
 });

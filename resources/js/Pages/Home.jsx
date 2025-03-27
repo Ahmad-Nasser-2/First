@@ -30,8 +30,11 @@ export default function Home() {
     ];
     return (
         <>
-            <Sidebar data={[SidebarLabels, SidebarImages]} />
-            {/* other contents */}
+            <div className="relative">
+                <Sidebar data={[SidebarLabels, SidebarImages]} />
+                <CustomInput id="name" label="name" />
+                {/* other contents */}
+            </div>
         </>
     );
 }

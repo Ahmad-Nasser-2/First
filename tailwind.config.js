@@ -12,7 +12,7 @@ export default {
                     secondary: "#FFB6B9", // Light theme secondary color
                 },
                 dark: {
-                    primary: "#1E3A8A", // Dark theme primary color
+                    primary: "#242424", // Dark theme primary color
                     secondary: "#4B5563", // Dark theme secondary color
                 },
             },

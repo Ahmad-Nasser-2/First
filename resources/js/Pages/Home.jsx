@@ -1,5 +1,6 @@
 import CustomInput from "../Components/CustomInput";
 import Sidebar from "../Components/Sidebar";
+import SignupLogin from "./Authentication/SignupLogin";
 
 export default function Home() {
     const SidebarLabels = [
@@ -32,7 +33,7 @@ export default function Home() {
         <>
             <div className="relative">
                 <Sidebar data={[SidebarLabels, SidebarImages]} />
-                <CustomInput id="name" label="name" />
+                <SignupLogin />
                 {/* other contents */}
             </div>
         </>

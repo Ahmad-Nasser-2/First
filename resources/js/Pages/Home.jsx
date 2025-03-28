@@ -1,6 +1,7 @@
 import CustomInput from "../Components/CustomInput";
 import Sidebar from "../Components/Sidebar";
 import SignupLogin from "./Authentication/SignupLogin";
+import Items from "./Items";
 
 export default function Home() {
     const SidebarLabels = [
@@ -33,8 +34,11 @@ export default function Home() {
         <>
             <div className="relative">
                 <Sidebar data={[SidebarLabels, SidebarImages]} />
-                <SignupLogin />
-                {/* other contents */}
+                {/* On large screens, add left margin equal to the sidebar width */}
+                <div className="lg:ml-64">
+                    <Items />
+                    {/* other contents */}
+                </div>
             </div>
         </>
     );

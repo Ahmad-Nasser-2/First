@@ -5,21 +5,21 @@ CustomInput Component
 
 Props:
 - id: string, text for the input label.
+- name: string, name attribute for the input.
 - label: string, unique id for the input.
 - type: string, input type (default is "text").
 - addon: string, optional element displayed at the left side of the input.
 - value: string, current value of the input.
 - onChange: function, callback invoked on input change.
-- name: string, optional name attribute for the input.
 */
 const CustomInput = ({
     id,
+    name,
     label,
     type = "text",
     addon = "",
     value = "",
     onChange = "",
-    name = "",
 }) => {
     return (
         <div className="relative">

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import CsrfToken from "./CsrfToken";
+import CustomInput from "../../Components/CustomInput";
 
 const SignupLogin = () => {
     const [isSignup, setIsSignup] = useState(false);
+    const [csrfToken, setCsrfToken] = useState("");
 
     const handleToggle = () => {
         setIsSignup(!isSignup);
@@ -9,6 +12,7 @@ const SignupLogin = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-200">
+            <CsrfToken onTokenFetched={setCsrfToken} />
             <div className="relative w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
                 <div
                     className={`flex transition-transform duration-500`}
@@ -24,24 +28,27 @@ const SignupLogin = () => {
                         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
                             Welcome Back
                         </h2>
-                        <form>
+                        <form action="/Home" method="get">
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value={csrfToken}
+                            />
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    Username
-                                </label>
-                                <input
+                                <CustomInput
+                                    id="loginUsername"
+                                    name="username"
+                                    label="Username"
                                     type="text"
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                                     required
                                 />
                             </div>
                             <div className="mb-2">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    PIN
-                                </label>
-                                <input
+                                <CustomInput
+                                    id="loginPassword"
+                                    name="password"
+                                    label="Password"
                                     type="password"
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                                     required
                                 />
                             </div>
@@ -50,7 +57,7 @@ const SignupLogin = () => {
                                     href="#"
                                     className="text-sm text-blue-500 hover:underline"
                                 >
-                                    Forgot PIN?
+                                    Forgot Password?
                                 </a>
                                 <label className="flex items-center text-sm text-gray-700">
                                     <input type="checkbox" className="mr-1" />{" "}
@@ -79,44 +86,45 @@ const SignupLogin = () => {
                         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
                             Create Account
                         </h2>
-                        <form>
+                        <form action="#" method="post">
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value={csrfToken}
+                            />
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    Username
-                                </label>
-                                <input
+                                <CustomInput
+                                    id="signupUsername"
+                                    name="username"
+                                    label="Username"
                                     type="text"
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500"
                                     required
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    PIN
-                                </label>
-                                <input
+                                <CustomInput
+                                    id="signupPassword"
+                                    name="password"
+                                    label="Password"
                                     type="password"
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500"
                                     required
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    Confirm PIN
-                                </label>
-                                <input
+                                <CustomInput
+                                    id="signupConfirmPassword"
+                                    name="Password_Confirm"
+                                    label="Confirm Password"
                                     type="password"
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500"
                                     required
                                 />
                             </div>
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    Secret Key
-                                </label>
-                                <input
+                                <CustomInput
+                                    id="signupSecretKey"
+                                    name="secretKey"
+                                    label="Secret Key"
                                     type="text"
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500"
                                     required
                                 />
                             </div>

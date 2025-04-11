@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 
 
-Route::get("/home",[AuthController::class,"home"]);
+Route::get("/",[AuthController::class,"home"]);
 
 Route::post('/home', function () {
     return inertia('Home');

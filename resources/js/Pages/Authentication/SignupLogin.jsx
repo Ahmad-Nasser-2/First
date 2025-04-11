@@ -11,9 +11,9 @@ const SignupLogin = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-200">
+        <div className="flex items-center justify-center min-h-screen bg-gray-200">
             <CsrfToken onTokenFetched={setCsrfToken} />
-            <div className="relative w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="relative w-full max-w-md overflow-hidden bg-white shadow-lg rounded-xl">
                 <div
                     className={`flex transition-transform duration-500`}
                     style={{
@@ -25,10 +25,10 @@ const SignupLogin = () => {
                 >
                     {/* Login Form */}
                     <div className="w-1/2 p-8">
-                        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+                        <h2 className="mb-6 text-3xl font-bold text-center text-gray-800">
                             Welcome Back
                         </h2>
-                        <form action="/Home" method="get">
+                        <form action="/login" method="post">
                             <input
                                 type="hidden"
                                 name="_token"
@@ -52,7 +52,7 @@ const SignupLogin = () => {
                                     required
                                 />
                             </div>
-                            <div className="flex justify-between items-center mb-4">
+                            <div className="flex items-center justify-between mb-4">
                                 <a
                                     href="#"
                                     className="text-sm text-blue-500 hover:underline"
@@ -66,12 +66,12 @@ const SignupLogin = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition"
+                                className="w-full py-3 text-white transition bg-blue-600 rounded-md hover:bg-blue-700"
                             >
                                 Login
                             </button>
                         </form>
-                        <p className="mt-4 text-center text-sm">
+                        <p className="mt-4 text-sm text-center">
                             Don't have an account?{" "}
                             <button
                                 onClick={handleToggle}
@@ -83,10 +83,10 @@ const SignupLogin = () => {
                     </div>
                     {/* Signup Form */}
                     <div className="w-1/2 p-8">
-                        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+                        <h2 className="mb-6 text-3xl font-bold text-center text-gray-800">
                             Create Account
                         </h2>
-                        <form action="#" method="post">
+                        <form action="/signup" method="post">
                             <input
                                 type="hidden"
                                 name="_token"
@@ -130,12 +130,12 @@ const SignupLogin = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition"
+                                className="w-full py-3 text-white transition bg-green-600 rounded-md hover:bg-green-700"
                             >
                                 Sign Up
                             </button>
                         </form>
-                        <p className="mt-4 text-center text-sm">
+                        <p className="mt-4 text-sm text-center">
                             Already have an account?{" "}
                             <button
                                 onClick={handleToggle}
